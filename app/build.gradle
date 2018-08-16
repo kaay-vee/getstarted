@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.retrofitframework"
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+ext {
+    supportLibVersion = '27.1.1'
+    gmsVersion = '11.0.1'
+    retrofit = '2.3.0'
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // NATIVE ANDROID
+    compile "com.android.support:appcompat-v7:${supportLibVersion}"
+    compile "com.android.support:cardview-v7:${supportLibVersion}"
+    compile "com.android.support:design:${supportLibVersion}"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    // RETROFIT
+    compile "com.squareup.retrofit2:retrofit:${retrofit}"
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0'
+    compile 'com.squareup.okhttp3:okhttp:3.1.2'
+    compile 'com.jakewharton.retrofit:retrofit1-okhttp3-client:1.1.0'
+    compile 'com.google.code.gson:gson:2.6.1'
+    // IMAGE UTILS
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    // GOOGLE PLAY SERVICES
+    compile 'com.jaredrummler:material-spinner:1.1.0'
+    compile "com.google.android.gms:play-services:${gmsVersion}"
+    compile "com.google.firebase:firebase-core:${gmsVersion}"
+    compile "com.google.firebase:firebase-crash:${gmsVersion}"
+    // MEMORY LEAKS
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:+'
+}
